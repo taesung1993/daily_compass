@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/today_compass/",
   plugins: [react()],
   resolve: {
     alias: [
