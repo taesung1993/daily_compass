@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs";
 
 import "dayjs/locale/ko";
+import { cn } from "@/lib/utils";
 
 dayjs.locale("ko");
 
@@ -30,7 +31,7 @@ export default function Weather({ status, temperature }: Props) {
     }
   }, [currentTime]);
   const statusText = useMemo(() => {
-    return "흐림";
+    return "구름 많음";
   }, [status]);
 
   useEffect(() => {
@@ -43,33 +44,22 @@ export default function Weather({ status, temperature }: Props) {
     };
   }, []);
 
-  console.log(imageUrl);
-
   return (
-    <Card className={background}>
-      <div className="px-6 pt-9 pb-11">
-        <div>
-          <p className="text-[20px] font-semibold text-white">인천광역시</p>
-          <p className="text-[14px] font-regular text-white">
-            {currentTime.format("MM월 DD일 dddd | HH:mm")}
+    <Card className={cn(background, "rounded-none")}>
+      <div className="px-6 pt-9 pb-11 aspect-[4/3] flex flex-col justify-center items-center">
+        <img src={imageUrl} width="90" alt="clouds" />
+        <div className="relative mt-5">
+          <p className="font-roboto text-[60px] font-black text-white">
+            {Math.floor(temperature.max)}
+          </p>
+          <p className="absolute -top-1 -right-4 font-roboto text-[48px] font-black text-white">
+            °
           </p>
         </div>
-
-        <div>
-          <div className="flex items-center justify-between">
-            <p className="text-[48px] font-semibold text-white">
-              {Math.floor(temperature.max)}°
-            </p>
-            <img src={imageUrl} alt="clouds" width="66" height="44" />
-          </div>
-
-          <p className="text-[14px] font-semibold text-white">
-            <span className="uppercase mr-2">{statusText}</span>
-            <span>{`${Math.floor(temperature.max)}° / ${Math.floor(
-              temperature.min
-            )}°`}</span>
-          </p>
-        </div>
+        <p className="text-base text-white font-medium">{statusText}</p>
+        <p className="text-[14px] font-light text-white">
+          {currentTime.format("MM월 DD일 dddd")}
+        </p>
       </div>
     </Card>
   );

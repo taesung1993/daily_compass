@@ -10,6 +10,10 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      "sans-kr": ["Noto Sans KR", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -19,6 +23,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        black: "#222222",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -27,6 +32,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          compass: "#6265D1",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
