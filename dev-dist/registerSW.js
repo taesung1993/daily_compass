@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/today_compass/dev-sw.js?dev-sw', { scope: '/today_compass/', type: 'classic' })
