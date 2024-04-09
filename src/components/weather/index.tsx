@@ -17,6 +17,7 @@ interface Props {
 
 export default function Weather({ status, temperature }: Props) {
   const [currentTime, setCurrentTime] = useState(dayjs());
+  const imageUrl = new URL("/weathers/clouds.png", import.meta.url).href;
   const background = useMemo(() => {
     const hour = currentTime.hour();
 
@@ -42,6 +43,8 @@ export default function Weather({ status, temperature }: Props) {
     };
   }, []);
 
+  console.log(imageUrl);
+
   return (
     <Card className={background}>
       <div className="px-6 pt-9 pb-11">
@@ -57,12 +60,7 @@ export default function Weather({ status, temperature }: Props) {
             <p className="text-[48px] font-semibold text-white">
               {Math.floor(temperature.max)}°
             </p>
-            <img
-              src="/weathers/clouds.png"
-              alt="clouds"
-              width="66"
-              height="44"
-            />
+            <img src={imageUrl} alt="clouds" width="66" height="44" />
           </div>
 
           <p className="text-[14px] font-semibold text-white">
