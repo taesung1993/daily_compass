@@ -45,7 +45,7 @@ export default function Weather({ status, temperature }: Props) {
   }, []);
 
   return (
-    <Card className={cn(background, "rounded-none")}>
+    <Card className={cn(background, "rounded-none border-none")}>
       <div className="px-6 pt-9 pb-11 aspect-[4/3] flex flex-col justify-center items-center">
         <img src={imageUrl} width="90" alt="clouds" />
         <div className="relative mt-5">
